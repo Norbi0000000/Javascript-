@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladatok Megoldása</title>
+    <link rel="stylesheet" href="javafeladatok.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 1. Feladat -->
+        <h1>1. Feladat: Téglatest felszíne és térfogata</h1>
+        <p>Adja meg a téglatest oldalait:</p>
+        <form id="feladat-form-1">
+            <label for="oldal1">Első oldal (cm):</label>
+            <input type="number" id="oldal1" name="oldal1" step="0.1" value="10.4" required><br>
+
+            <label for="oldal2">Második oldal (cm):</label>
+            <input type="number" id="oldal2" name="oldal2" step="0.1" value="13.5" required><br>
+
+            <label for="oldal3">Harmadik oldal (cm):</label>
+            <input type="number" id="oldal3" name="oldal3" step="0.1" value="8.2" required><br>
+
+            <button type="button" onclick="szamitas()">Számítás</button>
+        </form>
+
+        <div id="eredmeny-1">
+            <p>Felszín: <span id="felszin"></span> cm²</p>
+            <p>Térfogat: <span id="terfogat"></span> cm³</p>
+        </div>
+
+        <!-- 2. Feladat -->
+        <h1>2. Feladat: Testtömegindex (BMI) számítása</h1>
+        <p>Adja meg a testsúlyt és magasságot:</p>
+        <form id="feladat-form-2">
+            <label for="tomeg">Testsúly (kg):</label>
+            <input type="number" id="tomeg" name="tomeg" step="0.1" value="81.2" required><br>
+
+            <label for="magassag">Magasság (m):</label>
+            <input type="number" id="magassag" name="magassag" step="0.01" value="1.78" required><br>
+
+            <button type="button" onclick="bmiSzamitas()">Számítás</button>
+        </form>
+
+        <div id="eredmeny-2">
+            <p>BMI: <span id="bmi"></span></p>
+        </div>
+
+        <!-- 3. Feladat: Szökőév ellenőrzése -->
+        <h1>3. Feladat: Szökőév ellenőrzése</h1>
+        <p>Adja meg az évet:</p>
+        <form id="feladat-form-3">
+            <input type="number" id="ev" name="ev" required><br>
+            <button type="button" onclick="szokoevEllenorzes()">Ellenőrzés</button>
+        </form>
+
+        <div id="eredmeny-3">
+            <p><span id="szokoev"></span></p>
+        </div>
+
+        <!-- 4. Feladat: String karakterek kiírása -->
+        <h1>4. Feladat: Szó karaktereinek kiírása</h1>
+        <p>Adja meg a szót:</p>
+        <form id="feladat-form-4">
+            <input type="text" id="sztring" name="sztring" required><br>
+            <button type="button" onclick="stringKarakterek()">Kiírás</button>
+        </form>
+
+        <div id="eredmeny-4">
+            <p><span id="karakterek"></span></p>
+        </div>
+
+        <!-- 5. Feladat: Számjegyek átlaga -->
+        <h1>5. Feladat: Számjegyek átlagának számítása</h1>
+        <p>Adja meg a számot:</p>
+        <form id="feladat-form-5">
+            <input type="number" id="szam" name="szam" required><br>
+            <button type="button" onclick="szamjegyekAtlaga()">Átlag számítása</button>
+        </form>
+
+        <div id="eredmeny-5">
+            <p>Átlag: <span id="atlag"></span></p>
+        </div>
+
+        <!-- 6. Feladat: Betűk megállítása nem betű esetén -->
+        <h1>6. Feladat: Betűk kiírása, amíg betűvel találkozunk</h1>
+        <p>Adja meg a szót:</p>
+        <form id="feladat-form-6">
+            <input type="text" id="betuSztring" name="betuSztring" required><br>
+            <button type="button" onclick="betuEllenorzes()">Kiírás</button>
+        </form>
+
+        <div id="eredmeny-6">
+            <p><span id="betuk"></span></p>
+        </div>
+
+        <!-- 7. Feladat: Osztók kiírása -->
+        <h1>7. Feladat: Osztók kiírása 10-től 30-ig</h1>
+        <button type="button" onclick="osztokKiirasa()">Osztók kiírása</button>
+
+        <div id="eredmeny-7">
+            <p><span id="osztok"></span></p>
+        </div>
+        <!-- 8. Feladat: Maradék másodpercek a napból -->
+        <h1>8. Feladat: Maradék másodpercek a napból</h1>
+        <button type="button" onclick="maradekMasodpercek()">Számítás</button>
+
+        <div id="eredmeny-8">
+            <p>Maradék másodpercek: <span id="masodpercek"></span></p>
+        </div>
+
+        <!-- 9. Feladat: Érdemjegy meghatározása -->
+        <h1>9. Feladat: Érdemjegy meghatározása</h1>
+        <form id="feladat-form-9">
+            <label for="pontszam">Adja meg a pontszámot:</label>
+            <input type="number" id="pontszam" name="pontszam" min="0" max="100" required><br>
+            <button type="button" onclick="erdemjegy()">Érdemjegy</button>
+        </form>
+
+        <div id="eredmeny-9">
+            <p>Érdemjegy: <span id="jegy"></span></p>
+        </div>
+
+        <!-- 10. Feladat: Kő-papír-olló játék -->
+        <h1>10. Feladat: Kő-papír-olló játék</h1>
+        <form id="feladat-form-10">
+            <label for="jatek1">Első játékos választása (1-kő, 2-papír, 3-olló):</label>
+            <input type="number" id="jatek1" name="jatek1" min="1" max="3" required><br>
+            <label for="jatek2">Második játékos választása (1-kő, 2-papír, 3-olló):</label>
+            <input type="number" id="jatek2" name="jatek2" min="1" max="3" required><br>
+            <button type="button" onclick="koPapirOllo()">Eredmény</button>
+        </form>
+
+        <div id="eredmeny-10">
+            <p><span id="jatekEredmeny"></span></p>
+        </div>
+
+        <!-- 11. Feladat: Faktoriális számítás -->
+        <h1>11. Feladat: Faktoriális számítása</h1>
+        <form id="feladat-form-11">
+            <label for="faktSzam">Adja meg a számot:</label>
+            <input type="number" id="faktSzam" name="faktSzam" min="0" required><br>
+            <button type="button" onclick="faktorialis()">Számítás</button>
+        </form>
+
+        <div id="eredmeny-11">
+            <p>Faktoriális: <span id="faktorialisEredmeny"></span></p>
+        </div>
+
+        <!-- 12. Feladat: Négyszög rajzolása főátlóval -->
+        <h1>12. Feladat: Négyszög rajzolása</h1>
+        <form id="feladat-form-12">
+            <label for="meret">Adja meg a négyszög méretét:</label>
+            <input type="number" id="meret" name="meret" min="1" required><br>
+            <button type="button" onclick="negyzetRajz()">Rajzolás</button>
+        </form>
+
+        <div id="eredmeny-12">
+            <pre><span id="negyzet"></span></pre>
+        </div>
+
+        <!-- 13. Feladat: 1-től 100-ig, de nem oszthatók 3-mal -->
+        <h1>13. Feladat: Számok kiírása oszthatók kihagyásával</h1>
+        <button type="button" onclick="szamokKihagyassal()">Kiírás</button>
+
+        <div id="eredmeny-13">
+            <p><span id="szamok"></span></p>
+        </div>
+
+        <!-- 14. Feladat: FizzBuzz játék -->
+        <h1>14. Feladat: FizzBuzz játék</h1>
+        <button type="button" onclick="fizzBuzz()">FizzBuzz</button>
+
+        <div id="eredmeny-14">
+            <p><span id="fizzbuzz"></span></p>
+        </div>
+
+        </div>
+
+        <script src="javafeladatok.js"></script>
+</body>
+</html>
